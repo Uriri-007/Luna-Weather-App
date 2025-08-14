@@ -1,38 +1,103 @@
 * {
     margin: 0;
     padding: 0;
-    /* border: 1px solid; */
     box-sizing: border-box;
 }
 
 :root {
-    --luna-dk-blue: #01023d;
-    --luna-toon-blue: #0cdbdb;
-    --luna-black: #000000;
-    --luna-white: #fff;
+    --luna-dark: #1a1a2e; /* A dark, slightly purplish shade for a 'thrilling' feel */
+    --luna-border: #0cdbdb; /* A vibrant teal for the distinct border */
+    --luna-text: #e9e9e9; /* Light text for readability on a dark background */
 }
 
 body {
-    height: max(100vh, 700px);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: var(--luna-dark); /* Set the dark background */
+    color: var(--luna-text); /* Set a light text color */
+    font-family: Arial, sans-serif;
 }
 
 .data-input {
-    width: 15rem;
-    height: 2rem;
-    border: 3px solid var(--luna-toon-blue);
+    width: 20rem; /* Increased width for better proportions */
+    height: 2.5rem; /* Increased height */
     display: flex;
-    justify-content: center;
+    border: 3px solid var(--luna-border); /* Distinct border color */
+    border-radius: 25px; /* Rounded corners for a modern look */
+    overflow: hidden; /* Ensures the input and button stay within the border */
+    margin-bottom: 2rem;
 }
 
 #city-name {
-    padding: 3px;
+    flex-grow: 1; /* Allows the input to take up most of the space */
+    border: none;
+    outline: none; /* Removes the default blue outline on focus */
+    padding: 0 1rem;
+    background-color: transparent; /* Makes the input field transparent */
+    color: var(--luna-text);
+    font-size: 1rem;
 }
 
 #search-btn {
-    background-color: var(--luna-white);
     border: none;
+    background-color: transparent;
+    cursor: pointer; /* Changes cursor to a hand on hover */
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+#search-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
+}
+
+.data-visuals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.weather-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent background for the card */
+    border: 1px solid var(--luna-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 20rem; /* Fixed width for a card-like appearance */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#icon {
+    width: 40%; /* Sets the icon height as you requested */
+    height: auto;
+    margin-bottom: 1rem;
+    max-width: 150px; /* Prevents the icon from getting too big */
+}
+
+#description, #address, #temperature, #windspeed, #condition {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+#description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#temperature {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--luna-toon-blue);
+}
+
+#address {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
