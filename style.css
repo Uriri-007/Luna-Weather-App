@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid; */
+    box-sizing: border-box;
+}
+
+:root {
+    --luna-dk-blue: #01023d;
+    --luna-toon-blue: #0cdbdb;
+    --luna-black: #000000;
+    --luna-white: #fff;
+}
+
+body {
+    height: max(100vh, 700px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.data-input {
+    width: 15rem;
+    height: 2rem;
+    border: 3px solid var(--luna-toon-blue);
+    display: flex;
+    justify-content: center;
+}
+
+#city-name {
+    padding: 3px;
+}
+
+#search-btn {
+    background-color: var(--luna-white);
+    border: none;
+}
