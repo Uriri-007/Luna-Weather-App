@@ -58,6 +58,11 @@ function getWetherData() {
     })
 }
 
+function getErrorMsg(error) {
+  alert(`404   \n ＞﹏＜\n ${error}`);
+}
+
+
 async function getSuitableIcon(icon) {
   const getIconData = await fetch(
     "https://api.giphy.com/v1/gifs/translate?api_key=OxOlAZlGrdoipwWS38MZhW0wlv9RXr51&s=" +
@@ -68,10 +73,6 @@ async function getSuitableIcon(icon) {
   domObj.imageSrc = refineIconData.data.images.original.url;
   domObj.altText = refineIconData.data.alt_text;
   updateUI(domObj);
-}
-
-function getErrorMsg(error) {
-  alert(`404   \n ＞﹏＜\n ${error}`);
 }
 
 function updateUI(obj) {
@@ -89,7 +90,7 @@ function updateUI(obj) {
   Domaccess.addressText.textContent = address;
   Domaccess.conditionText.textContent = condition;
   Domaccess.descriptionText.textContent = description;
-  Domaccess.temperatureText.textContent = `${temperature} °F`;
+  Domaccess.temperatureText.textContent = `${temperature}°F`;
   Domaccess.windspeedText.textContent = windspeed;
   Domaccess.weatherCard.appendChild(Domaccess.gifImg);
   Domaccess.gifImg.classList.add("gif-img");
@@ -101,10 +102,29 @@ function updateUI(obj) {
 //       Domaccess.iconImg.
 //   }
  }
+ 
+ function convertTemperature(self) {
+   let convertedTemp;
+   let temp = domObj.temperature;
+   if (self.textContent.includes("F")) {
+     convertedTemp = `${Math.round(((Number(temp) - 32) * 5) / 9)}°C`;
+   } else {
+     convertedTemp = `${temp}°F`
+   }
+   
+   self.textContent = convertedTemp;
+ }
 
 Domaccess.searchBtn.addEventListener("click", () => {
   Domaccess.dataVisuals.style.display = "flex";
   Domaccess.dataInputs.style.display = "none";
   getWetherData();
 });
-Domaccess.temperatureText.addEventListener("click", () => {})
+
+Domaccess.temperatureText.addEventListener("mouseover", (e) => {
+  convertTemperature(e.target)
+})
+
+Domaccess.temperatureText.addEventListener("click", (e) => {
+  convertTemperature(e.target)
+})

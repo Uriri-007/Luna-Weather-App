@@ -105,6 +105,8 @@ body {
     width: 100%;
     height: auto;
     max-width: 300px; /* Prevents the GIF from getting too big */
+    max-height: 500px;
+    object-fit: cover;
     border-radius: 10px; /* Rounded corners for the GIF */
     border: 2px solid var(--luna-border); /* Distinct border for the GIF */
 }
