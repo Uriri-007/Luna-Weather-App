@@ -10,6 +10,8 @@ const Domaccess = (() => {
   const temperatureText = document.getElementById("temperature");
   const weatherCard = document.querySelector(".weather-card");
   const gifImg = document.createElement("img");
+  const dataVisuals = document.querySelector(".data-visuals");
+  const dataInputs = document.querySelector(".data-input");
 
   return {
     searchBtn,
@@ -21,7 +23,9 @@ const Domaccess = (() => {
     iconImg,
     temperatureText,
     weatherCard,
-    gifImg
+    gifImg,
+    dataVisuals,
+    dataInputs,
   };
 })();
 
@@ -46,11 +50,11 @@ function getWetherData() {
       domObj.description = data.days[0].description;
       domObj.icon = data.days[0].icon;
       console.log(domObj);
-      
+      console.log(data)
       getSuitableIcon(domObj.icon);
     })
     .catch((error) => {
-      console.error("Error fetching weather data:", error);
+      getErrorMsg(error);
     })
 }
 
@@ -66,6 +70,10 @@ async function getSuitableIcon(icon) {
   updateUI(domObj);
 }
 
+function getErrorMsg(error) {
+  alert(`404   \n ＞﹏＜\n ${error}`);
+}
+
 function updateUI(obj) {
   const { 
     address, 
@@ -73,6 +81,7 @@ function updateUI(obj) {
     temperature, 
     condition, 
     description, 
+    icon,
     imageSrc,
     altText
   } = obj;
@@ -80,11 +89,22 @@ function updateUI(obj) {
   Domaccess.addressText.textContent = address;
   Domaccess.conditionText.textContent = condition;
   Domaccess.descriptionText.textContent = description;
-  Domaccess.temperatureText.textContent = temperature;
+  Domaccess.temperatureText.textContent = `${temperature} °F`;
   Domaccess.windspeedText.textContent = windspeed;
   Domaccess.weatherCard.appendChild(Domaccess.gifImg);
+  Domaccess.gifImg.classList.add("gif-img");
   Domaccess.gifImg.src = imageSrc;
   Domaccess.gifImg.alt = altText;
-}
 
-Domaccess.searchBtn.addEventListener("click", getWetherData);
+//   switch (icon.toLowerCase()) {
+//     case "clear-day":
+//       Domaccess.iconImg.
+//   }
+ }
+
+Domaccess.searchBtn.addEventListener("click", () => {
+  Domaccess.dataVisuals.style.display = "flex";
+  Domaccess.dataInputs.style.display = "none";
+  getWetherData();
+});
+Domaccess.temperatureText.addEventListener("click", () => {})

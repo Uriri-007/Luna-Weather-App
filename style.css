@@ -55,7 +55,7 @@ body {
 }
 
 .data-visuals {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -71,17 +71,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem; /* Adds space between elements */
 }
 
 #icon {
     width: 40%; /* Sets the icon height as you requested */
     height: auto;
-    margin-bottom: 1rem;
     max-width: 150px; /* Prevents the icon from getting too big */
 }
 
 #description, #address, #temperature, #windspeed, #condition {
-    margin: 0.5rem 0;
     font-size: 1.1rem;
 }
 
@@ -100,4 +99,12 @@ body {
 #address {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.gif-img {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* Prevents the GIF from getting too big */
+    border-radius: 10px; /* Rounded corners for the GIF */
+    border: 2px solid var(--luna-border); /* Distinct border for the GIF */
 }
