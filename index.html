@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A web app for checking the weather of different cities">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7ffbfb608c.js" crossorigin="anonymous"></script>
     <title>Luna Weather App</title>
 </head>
 <body>
     <section class="data-input">
             <input type="search" id="city-name" placeholder="City name e.g Auckland">
-            <button type="button" id="search-btn">🔎</button>
+            <button type="button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </section>
 
     <section class="data-visuals">
         <div class="weather-card">
+            <button class="back-btn" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
             <p id="description"></p>
             <p id="address"></p>
-            <img src="" alt="" id="icon">
             <p id="temperature"></p>
             <p id="windspeed"></p>
             <p id="condition"></p>
