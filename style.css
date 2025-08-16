@@ -1,4 +1,4 @@
-* {
+*, *::before{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,6 +9,7 @@
     /* A dark, slightly purplish shade for a 'thrilling' feel */
     --luna-border: #0cdbdb;
     /* A vibrant teal for the distinct border */
+    --luna-black: #000;
     --luna-text: #e9e9e9;
     /* Light text for readability on a dark background */
 }
@@ -24,6 +25,7 @@ body {
     color: var(--luna-text);
     /* Set a light text color */
     font-family: Arial, sans-serif;
+     position: relative;
 }
 
 .data-input {
@@ -41,6 +43,27 @@ body {
     margin-bottom: 2rem;
 }
 
+.data-input::before{
+    content: "LUNA";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: -1;
+    font-size: 25vw;
+    color: var(--luna-dark);
+    filter: blur(5px);
+    text-shadow: 3px 3px var(--luna-text);
+    height: 30vw;
+    width: 100%;
+    letter-spacing: 0.5ch;
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+}
+
 #city-name {
     flex-grow: 1;
     /* Allows the input to take up most of the space */
@@ -52,6 +75,10 @@ body {
     /* Makes the input field transparent */
     color: var(--luna-text);
     font-size: 1rem;
+}
+
+#city-name::placeholder {
+    color: var(--luna-text);
 }
 
 #search-btn {
@@ -127,7 +154,8 @@ body {
 #temperature {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--luna-toon-blue);
+    color: var(--luna-border);
+    text-shadow: 0.5px 0.5px 2px var(--luna-text);
 }
 
 #address {
@@ -150,4 +178,28 @@ body {
     /* Rounded corners for the GIF */
     border: 2px solid var(--luna-border);
     /* Distinct border for the GIF */
+}
+
+footer {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+    color: var(--luna-text);
+    font-weight: 600;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.github-icon-link:link {
+    text-decoration: none;
+    color: var(--luna-text);
+    text-shadow: 1px 1px var(--luna-black);
+}
+
+.github-icon-link:hover {
+    color: var(--luna-border);
+}
+
+.github-icon-link:visited {
+    color: var(--luna-text);
 }
